@@ -4,3 +4,8 @@ description: Um Helm chart para fazer deploy dos microsserviços da AluraFoods
 type: application
 version: 1.0.0 #Semver do próprio chart, não da aplicação
 appVersion: 0.0.1 #Semver da aplicação
+
+dependencies:
+  - name: mysql #Nome da app de dependencia (artifact hub)
+    version: "11.1.7" #Versão da app (artifact hub)
+    repository: https://charts.bitnami.com/bitnami #Nome do repo (artifact hub)
