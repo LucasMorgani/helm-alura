@@ -3,10 +3,10 @@ kind: Deployment
 metadata:
   name: pedidos
   labels:
-    {{- include "alura-foods-app.labels" . | nindent 4 -}}
+    {{- include "alura-foods-app.labels" . | nindent 4 }}
     app: pedidos
 spec:
-  replicas: 2
+  replicas: {{ .Values.pedidos.replicaCount }}
   selector:
     matchLabels:
       app: pedidos
@@ -34,11 +34,11 @@ spec:
               key: DB_HOST
         - name: DB_USER
           valueFrom:
-            secretKeyRef:
-              name: senhas
+            configMapKeyRef:
+              name: {{ .Values.configMap.name }}
               key: DB_USER
         - name: DB_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: senhas
-              key: DB_PASSWORD
+              name: {{ .Values.secret.name }}
+              key: mysql-root-password

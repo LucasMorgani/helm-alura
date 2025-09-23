@@ -2,15 +2,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ $service.name }}
+  name: {{ $services.name }}
   labels:
-    app: {{ $service.label }}
+    app: {{ $services.label }}
 spec:
   ports:
-  - port: {{ $service.port }}
-    name: {{ $service.name }}
+  - port: {{ $services.port }}
+    name: {{ $services.name }}
   clusterIP: None
   selector:
-    app: {{ $service.label }}
+    app: {{ $services.label }}
 ---
 {{- end -}}
